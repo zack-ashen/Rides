@@ -1,0 +1,63 @@
+.header {
+  margin-top: 0.8em; 
+}
+
+.loginContainer {
+  background-color: white;
+  padding: 2rem 3.75rem 2rem 3.75rem;
+  width: fit-content;
+  border-radius: 1.2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 3px 8px;
+  margin: 7rem auto;
+  border: solid 0.12rem #C4CCEB;
+}
+
+.loginHeader {
+  text-align: center;
+}
+
+.loginForm {
+  margin-top: 2rem;
+}
+
+.loginInput {
+  width: 30ch;
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.3rem 0.5rem 0.3rem 0.75rem;
+  border-radius: 0.7rem;
+  border: 0.1rem solid #C4CCEB;
+  transition: border-color ease-in-out 150ms;
+  outline: none;
+  color: inherit;
+  background-color: #FAFBFF;
+}
+
+.loginInput:focus {
+  border-color: #3E2E7E;
+}
+
+.organizationLabel {
+  margin: 0 0 0.5rem 0;
+}
+
+.passwordLabel {
+  margin: 1.2rem 0 0.5rem 0;
+}
+
+.signInButton {
+  padding: 0.6rem 0;
+  display: block;
+  width: 100%;
+  background-color: #3E2E7E;
+  color: white;
+  font-weight: 300;
+  border-radius: 0.75rem;
+  margin-top: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  transition: background-color 150ms ease-in-out;
+}
+
+.signInButton:hover {
+  background-color: #302269;
+}
