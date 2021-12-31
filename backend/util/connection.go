@@ -30,7 +30,7 @@ func GetMongoClient() (*mongo.Client, error) {
 	mongoOnce.Do(func() {
 		// Set client options
 		clientOptions := options.Client().ApplyURI(CONNECTIONSTRING)
-		
+
 		// Connect to MongoDB
 		ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 		client, err := mongo.Connect(ctx, clientOptions)
