@@ -32,8 +32,10 @@ func UpdateOrg(org Organization) error {
 }
 
 func CreateOrg(org Organization) error {
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	_, err := OrgCollection().InsertOne(ctx, org)
 
-	return nil
+	return err
 }
 
 func FindOrg(id string) (Organization, error) {
