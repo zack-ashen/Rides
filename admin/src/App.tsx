@@ -6,7 +6,7 @@ import Landing from './pages/Landing/Landing';
 import './App.css';
 
 const App = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [token, setToken] = useState();
 
 
   const AuthenticatedContent = () => (

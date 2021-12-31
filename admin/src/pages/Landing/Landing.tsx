@@ -4,13 +4,24 @@ import { useState } from 'react';
 import './Landing.css';
 
 const Landing = () => {
-  const [orgId, setOrgId] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [orgId, setOrgId] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
 
   const login = () => {
-    
+    fetch("/api/auth/hello")
+      .then(res => res.json())
+      .then(result => console.log(result))
 
+    fetch('/api/auth/org', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({orgId, password})
+    })
+      .then(data => data.json())
+      .then(result => console.log(result))
   }
 
   return (
