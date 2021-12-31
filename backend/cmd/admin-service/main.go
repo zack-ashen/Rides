@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"rides/models"
+	"strings"
 )
 
 // Creates an Organization via the command line.
@@ -18,12 +19,15 @@ func createOrg() {
 	fmt.Println("----Create a New Organization----")
 	fmt.Print("* ID: ")
 	org.ID, _ = reader.ReadString('\n')
+	org.ID = strings.TrimSuffix(org.ID, "\n")
 
 	fmt.Print("* Name: ")
 	org.Name, _ = reader.ReadString('\n')
+	org.Name = strings.TrimSuffix(org.Name, "\n")
 
 	fmt.Print("* Password: ")
 	org.Password, _ = reader.ReadString('\n')
+	org.Password = strings.TrimSuffix(org.Password, "\n")
 
 	org.Events = []uint16{}
 	org.Drivers = []uint16{}
