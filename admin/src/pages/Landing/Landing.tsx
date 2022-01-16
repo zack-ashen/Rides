@@ -1,27 +1,37 @@
 import { useState } from 'react';
+import jwt from 'jwt-decode';
 
+import { toast } from '../../components/ToastNotification/ToastManager'
 
 import './Landing.css';
 
-const Landing = () => {
-  const [orgId, setOrgId] = useState<string>("");
+export type LandingProps = {
+  setToken: React.Dispatch<React.SetStateAction<string | undefined>>
+}
+
+const Landing = ({setToken} : LandingProps) => {
+  const [orgID, setOrgId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-
   const login = () => {
-    fetch("/api/auth/hello")
-      .then(res => res.json())
-      .then(result => console.log(result))
-
     fetch('/api/auth/org', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({orgId, password})
+      body: JSON.stringify({orgID, password})
     })
       .then(data => data.json())
-      .then(result => console.log(result))
+      .then(result => {
+        if (result.message) {
+          toast.show(result)
+        } else {
+          const token = result.token;
+          const payload = jwt(token);
+          setToken(token)
+          localStorage.setItem('token', token);
+        }
+      })
   }
 
   return (
@@ -34,7 +44,7 @@ const Landing = () => {
           <input 
             type="text" 
             className="loginInput" 
-            value={orgId}
+            value={orgID}
             onChange={(e) => setOrgId(e.target.value)}/>
 
           <p className="passwordLabel">Password</p>

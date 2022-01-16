@@ -6,31 +6,22 @@ import Landing from './pages/Landing/Landing';
 import './App.css';
 
 const App = () => {
-  const [token, setToken] = useState();
-
+  const [token, setToken] = useState<string>();
 
   const AuthenticatedContent = () => (
     <Routes>
-      <Route path="/">
-        <Landing />
-      </Route>
+      <Route path="/" element={<Landing setToken={setToken}/>}/>
     </Routes>
   )
 
   const UnauthenticatedContent = () => (
     <Routes>
-      <Route path="/">
-        <Landing />
-      </Route>
-      <Route path="*">
-        <Navigate to="/"/>
-      </Route>
-
+      <Route path="*" element={<Landing setToken={setToken}/>} />
     </Routes>
   )
 
 
-  return <Landing />
+  return token ? <AuthenticatedContent /> : <UnauthenticatedContent />
 }
 
 export default App;
