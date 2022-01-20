@@ -1,15 +1,10 @@
 import { useState } from 'react';
-import jwt from 'jwt-decode';
 
 import { toast } from '../../components/ToastNotification/ToastManager'
 
 import './Landing.css';
 
-export type LandingProps = {
-  setToken: React.Dispatch<React.SetStateAction<string | undefined>>
-}
-
-const Landing = ({setToken} : LandingProps) => {
+const Landing = () => {
   const [orgID, setOrgId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -27,8 +22,6 @@ const Landing = ({setToken} : LandingProps) => {
           toast.show(result)
         } else {
           const token = result.token;
-          const payload = jwt(token);
-          setToken(token)
           localStorage.setItem('token', token);
         }
       })

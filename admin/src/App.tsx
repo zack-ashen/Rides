@@ -1,26 +1,24 @@
-import { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router';
+import { Routes, Route } from 'react-router';
 
 import Landing from './pages/Landing/Landing';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 import './App.css';
 
 const App = () => {
-  const [token, setToken] = useState<string>();
-
   const AuthenticatedContent = () => (
     <Routes>
-      <Route path="/" element={<Landing setToken={setToken}/>}/>
+      <Route path="/" element={<Dashboard />}/>
     </Routes>
   )
 
   const UnauthenticatedContent = () => (
     <Routes>
-      <Route path="*" element={<Landing setToken={setToken}/>} />
+      <Route path="*" element={<Landing />} />
     </Routes>
   )
 
-
+  const token = localStorage.getItem('token')
   return token ? <AuthenticatedContent /> : <UnauthenticatedContent />
 }
 
